@@ -1,6 +1,7 @@
 package com.application.Application.Config;
 
 import com.application.Application.Modules.User;
+import com.application.Application.Services.MessageServices;
 import com.application.Application.Services.UserServices;
 import com.application.Application.WebSockets.SocketHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +17,17 @@ import org.springframework.web.socket.server.support.HttpSessionHandshakeInterce
 @EnableWebSocket
 public class WebSocketConfig implements WebSocketConfigurer {
     private final UserServices Users;
+    private final MessageServices Messages;
 
     @Autowired
-    public WebSocketConfig(UserServices userServices){
+    public WebSocketConfig(UserServices userServices, MessageServices messageServices){
+        this.Messages = messageServices;
         this.Users = userServices;
     }
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(new SocketHandler(Users), "/ws")
+        registry.addHandler(new SocketHandler(Users, Messages), "/ws")
                 .addInterceptors(new HttpSessionHandshakeInterceptor())
                 .setAllowedOrigins("*");
     }

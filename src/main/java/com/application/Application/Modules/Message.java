@@ -23,9 +23,10 @@ public class Message {
 
     }
 
-    public Message(User user1, User user2){
+    public Message(User user1, User user2, HashMap<String, String> _map){
         this.user1 = user1;
         this.user2 = user2;
+        this.messages = _map;
     }
 
     public void addMessage(String senderUsername, String message){
