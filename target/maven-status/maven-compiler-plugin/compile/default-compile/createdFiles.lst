@@ -1,0 +1,11 @@
+com/application/Application/Services/UserServices.class
+com/application/Application/Application.class
+com/application/Application/API/MessagesController.class
+com/application/Application/API/UserAuthenticationController.class
+com/application/Application/Services/MessageServices.class
+com/application/Application/Modules/Message.class
+com/application/Application/Repositories/MessagesRepository.class
+com/application/Application/Config/Config.class
+com/application/Application/Modules/User.class
+com/application/Application/API/UserController.class
+com/application/Application/Repositories/UserRepository.class

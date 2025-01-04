@@ -1,0 +1,13 @@
+/home/hiezen/Desktop/Application/src/main/java/com/application/Application/API/MessagesController.java
+/home/hiezen/Desktop/Application/src/main/java/com/application/Application/API/UserAuthenticationController.java
+/home/hiezen/Desktop/Application/src/main/java/com/application/Application/API/UserController.java
+/home/hiezen/Desktop/Application/src/main/java/com/application/Application/Application.java
+/home/hiezen/Desktop/Application/src/main/java/com/application/Application/Config/Config.java
+/home/hiezen/Desktop/Application/src/main/java/com/application/Application/Config/WebSocketConfig.java
+/home/hiezen/Desktop/Application/src/main/java/com/application/Application/Modules/Message.java
+/home/hiezen/Desktop/Application/src/main/java/com/application/Application/Modules/User.java
+/home/hiezen/Desktop/Application/src/main/java/com/application/Application/Repositories/MessagesRepository.java
+/home/hiezen/Desktop/Application/src/main/java/com/application/Application/Repositories/UserRepository.java
+/home/hiezen/Desktop/Application/src/main/java/com/application/Application/Services/MessageServices.java
+/home/hiezen/Desktop/Application/src/main/java/com/application/Application/Services/UserServices.java
+/home/hiezen/Desktop/Application/src/main/java/com/application/Application/WebSockets/WebSocketHandler.java
