@@ -16,7 +16,6 @@ body {
 .chat_window {
 	height: 93dvh;
 	width: 100dvw;
-	border-radius: 10px;
 	background-color: #fff;
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 	background-color: #f8f8f8;
@@ -24,7 +23,7 @@ body {
 }
   
 .top_menu {
-	background-color: #fff;
+	background-color: #007bff;
 	width: 100%;
 	padding: 20px 0 15px;
 	box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1);
@@ -33,7 +32,7 @@ body {
 
 .top_menu .title {
 	text-align: center;
-	color: #bcbdc0;
+	color: #e3e3e3;
 	font-size: 20px;
 }
   
@@ -42,8 +41,8 @@ body {
 	list-style: none;
 	padding: 20px 10px 0 10px;
 	margin: 0;
-	height: 347px;
-	overflow: scroll;
+	height: 100dvh;
+	overflow-y: scroll;
   }
   .messages .message {
 	clear: both;
@@ -174,11 +173,14 @@ body {
 .message_template {
 	display: none;
 }
-.navbar {
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	height: 7dvh;
-	width: 100dvw;
-	background: linear-gradient(-135deg, #007bff, #007bff);
+
+.text_wrapper {
+	height: auto;
+	width: auto;
+	word-wrap: break-word;
+}
+
+.avatar {
+	background-position: center;
+	background-size: cover;
 }
