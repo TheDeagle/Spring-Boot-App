@@ -65,5 +65,10 @@ Socket.onclose = function(){
 }
 
 
-
 window.Socket = Socket;
+
+document.querySelector(".fa-house").addEventListener("click", function()
+{
+	console.log("wtf");
+	window.location.href = window.location.origin + "/html/home.html";
+})

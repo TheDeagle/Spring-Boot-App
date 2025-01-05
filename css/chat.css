@@ -34,6 +34,8 @@ body {
 	text-align: center;
 	color: #e3e3e3;
 	font-size: 20px;
+	top: -3px;
+	position: relative;
 }
   
   .messages {
@@ -63,21 +65,19 @@ body {
 	right: 100%;
 	border-right-color: #ffe6cb;
   }
-  .messages .message.left .text {
-	color: #c48843;
-  }
+
   .messages .message.right .avatar {
 	background-color: #fdbf68;
 	float: right;
   }
   .messages .message.right .text_wrapper {
-	background-color: #c7eafc;
+	background-color: #a0dfff;
 	margin-right: 20px;
 	float: right;
   }
   .messages .message.right .text_wrapper::after, .messages .message.right .text_wrapper::before {
 	left: 100%;
-	border-left-color: #c7eafc;
+	border-left-color: #a0dfff;
   }
   .messages .message.right .text {
 	color: #45829b;
@@ -119,6 +119,7 @@ body {
   .messages .message .text_wrapper .text {
 	font-size: 18px;
 	font-weight: 300;
+	color: rgba(0, 0, 0, 0.863);
   }
   
   .bottom_wrapper {
@@ -183,4 +184,13 @@ body {
 .avatar {
 	background-position: center;
 	background-size: cover;
+}
+
+.fa-house, .fa-solid {
+	display: block;
+	position: absolute;
+	margin-left: 40px;
+	color: white;
+	cursor: pointer;
+	z-index: 2;
 }
