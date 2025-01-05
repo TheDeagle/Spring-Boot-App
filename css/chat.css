@@ -39,11 +39,12 @@ body {
 }
   
   .messages {
+	z-index: 2;
 	position: relative;
 	list-style: none;
 	padding: 20px 10px 0 10px;
 	margin: 0;
-	height: 100dvh;
+	height: 84dvh;
 	overflow-y: scroll;
   }
   .messages .message {
@@ -193,4 +194,5 @@ body {
 	color: white;
 	cursor: pointer;
 	z-index: 2;
+	font-size: 20px;
 }

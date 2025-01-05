@@ -1,4 +1,5 @@
 var _userData;
+var _chatterData;
 
 function fetchProfile(){
 	fetch("http://localhost:8080/api/v1/profile", {
@@ -28,7 +29,7 @@ function fetchUrl(){
 		return Response.json();
 	})
 	.then(Data => {
-		console.log(Data);
+		_chatterData = Data;
 		document.querySelector(".title").innerText = Data[0].username;
 		for (let i = 0; i < Data[1].length; i++){
 			var _leftRight = Data[1][i].receiverUsername == _userData.username ? "left" : "right"; 
@@ -40,7 +41,6 @@ function fetchUrl(){
 																</li>`;
 			var _pfp = document.querySelector(`.avatar${i}`);
 			var _pfpPath = Data[1][i].receiverUsername == _userData.username ? Data[0].pfpPath : _userData.pfpPath; 
-			console.log(_pfpPath);
 			_pfp.style.backgroundImage = `url("http://localhost:8888/${_pfpPath.replace("uploads/", "")}")`;
 		}
 	})
@@ -57,6 +57,8 @@ Socket.onopen = function(){
 
 Socket.onmessage = function(e){
 	console.log(e.data);
+	var _json = JSON.parse(e.data);
+	
 }
 
 
@@ -72,3 +74,23 @@ document.querySelector(".fa-house").addEventListener("click", function()
 	console.log("wtf");
 	window.location.href = window.location.origin + "/html/home.html";
 })
+
+document.addEventListener("keypress", function(e){
+	if (e.key == "Enter"){
+		console.log(_chatterData[0].username);
+		var _msg = document.querySelector(".message_input").value;
+		Socket.send(JSON.stringify({
+			"receiverUsername": _chatterData[0].username,
+			"message": _msg
+		}));
+		this.querySelector(".message_input").value = "";
+		var _rand = parseInt(Math.random() * 1000);
+		document.querySelector(".messages").innerHTML += ` <li class="message right appeared">
+																	<div class="avatar avatar${_rand}"></div>
+																	<div class="text_wrapper">
+																		<div class="text">${_msg}</div>
+																	</div>
+																</li>`;
+		document.querySelector(`.avatar${_rand}`).style.backgroundImage = `url("http://localhost:8888/${_userData.pfpPath.replace("uploads/", "")}")`;	
+	}
+});
