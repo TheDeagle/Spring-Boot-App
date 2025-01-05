@@ -1,5 +1,7 @@
 package com.application.Application.API;
 
+import com.application.Application.Modules.Message;
+import com.application.Application.Services.MessageServices;
 import com.application.Application.Services.UserServices;
 import com.application.Application.Modules.User;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,15 +16,19 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @RestController
 public class UserController {
     private final UserServices Users;
+    private final MessageServices Messages;
 
-    public UserController(UserServices userServices){
+    public UserController(UserServices userServices, MessageServices messageServices)
+    {
         this.Users = userServices;
+        this.Messages = messageServices;
     }
 
     @GetMapping("/api/v1/csrftoken")
@@ -46,7 +52,10 @@ public class UserController {
         User _ret = this.Users.getUser(username);
         if (_ret == null)
             return ResponseEntity.badRequest().body("User does not exist!");
-        return ResponseEntity.ok().body(_ret);
+        List<Object> _list = new ArrayList<>();
+        _list.add(_ret);
+        _list.add(this.Messages.getMessage(_user, _ret).getMessages());
+        return ResponseEntity.ok().body(_list);
     }
 
     @PostMapping("/api/v1/register")
@@ -85,7 +94,7 @@ public class UserController {
     public ResponseEntity<Object> profile(HttpServletRequest request){
         User _user = this.Users.isLoggedIn(request);
         if (_user != null)
-            return ResponseEntity.ok().body(_user);
+            return ResponseEntity.status(HttpStatus.OK).body(_user);
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You are not logged in!");
     }
 }

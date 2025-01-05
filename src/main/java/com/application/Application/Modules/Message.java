@@ -1,9 +1,14 @@
 package com.application.Application.Modules;
 
+import com.application.Application.Serializers.MessageSerializer;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.MultiMap;
+import org.apache.catalina.LifecycleState;
+import org.hibernate.annotations.Type;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Entity
 @Table(name = "messages")
@@ -11,33 +16,36 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
-    HashMap<String, String> messages;
+    @OneToMany(fetch = FetchType.EAGER)
+    List<MessageSerializer> messagesList = new ArrayList<MessageSerializer>();
     @ManyToOne
     @JoinColumn(name = "user1_id")
-    User user1;
+    private User user1;
     @ManyToOne
     @JoinColumn(name = "user2_id")
-    User user2;
+    private User user2;
 
     public Message(){
 
     }
 
-    public Message(User user1, User user2, HashMap<String, String> _map){
+    public Message(User user1, User user2){
         this.user1 = user1;
         this.user2 = user2;
-        this.messages = _map;
     }
 
-    public void addMessage(String senderUsername, String message){
-        this.messages.put(senderUsername, message);
+    public void addMessage(MessageSerializer message){
+        this.messagesList.add(message);
+        for (MessageSerializer message1: this.messagesList){
+            System.out.println(message1.getMessage());
+        }
     }
 
-    public Map<String, String> getMessages() {
-        return messages;
+    public List<MessageSerializer> getMessages() {
+        return messagesList;
     }
 
-    public void setMessage(HashMap<String, String> messages) {
-        this.messages = messages;
+    public void setMessage(List<MessageSerializer> messagesList) {
+        this.messagesList = messagesList;
     }
 }

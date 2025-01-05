@@ -57,8 +57,7 @@ public class SocketHandler extends TextWebSocketHandler {
             User _receiver = this.Users.getUser(_serializer.getReceiverUsername());
             if (_receiver == null)
                 throw new Exception("User not found");
-            Message _msg = this.Messages.getMessage(_user, _receiver);
-            _msg.addMessage(_user.getUsername(), _serializer.getMessage());
+            this.Messages.addMessage(_user, _receiver, _serializer.getMessage());
             if (UsersSessions.get(_receiver.getUsername()) != null)
                 UsersSessions.get(_receiver.getUsername()).sendMessage(new TextMessage(_serializer.getMessage()));
             System.out.println("A MESSAGE HAS BEN SENT TO " + _receiver.getUsername() + " SUCCESSFULLY");
