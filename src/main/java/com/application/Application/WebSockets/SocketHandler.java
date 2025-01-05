@@ -58,18 +58,21 @@ public class SocketHandler extends TextWebSocketHandler {
             if (_receiver == null)
                 throw new Exception("User not found");
             this.Messages.addMessage(_user, _receiver, _serializer.getMessage());
-            if (UsersSessions.get(_receiver.getUsername()) != null)
-                UsersSessions.get(_receiver.getUsername()).sendMessage(new TextMessage(_serializer.getMessage()));
-            System.out.println("A MESSAGE HAS BEN SENT TO " + _receiver.getUsername() + " SUCCESSFULLY");
+            if (UsersSessions.get(_receiver.getUsername()) != null){
+                Map<String, String> _json = new HashMap<>();
+                _json.put("senderUsername", _user.getUsername());
+                _json.put("message", _serializer.getMessage());
+                UsersSessions.get(_receiver.getUsername()).sendMessage(new TextMessage("{" +
+                        "\"senderUsername\": \"" + _user.getUsername() + "\"," +
+                        "\"message\": \"" + _serializer.getMessage() + "\"}"));
+            }
+            System.out.println("A MESSAGE HAS BEEN SENT TO " + _serializer.getReceiverUsername());
+            System.out.println("A SOCKET MESSAGE HAS BEEN RECEIVED");
         }
         catch (Exception e){
             System.out.println(e.getMessage());
             return;
         }
-        System.out.println("A MESSAGE HAS BEEN SENT TO " + _serializer.getReceiverUsername());
-        System.out.println("A SOCKET MESSAGE HAS BEEN RECEIVED");
-        TextMessage _msg = new TextMessage("Hello " + _user.getUsername());
-        session.sendMessage(_msg);
     }
 
 //    {
