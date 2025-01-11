@@ -71,15 +71,9 @@ public class SocketHandler extends TextWebSocketHandler {
         }
         catch (Exception e){
             System.out.println(e.getMessage());
-            return;
         }
     }
-
-//    {
-//        "receiverUsername": "someUsername",
-//        "message": "someMessage"
-//    }
-
+    
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus closeStatus){
         User _user = this.Users.isWebSocketLoggedIn(session);
