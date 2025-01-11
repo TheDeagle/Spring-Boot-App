@@ -11,7 +11,6 @@ fetch("http://localhost:8080/api/v1/users", {
 	return Response.json();
 })
 .then(Data => {
-	console.log(Data);
 	var _userWrapper = document.querySelector(".usersWrapper");
 	for (var i = 0; i < Data.length; i++){
 		_userWrapper.innerHTML += `<div class="profile-container">
@@ -26,7 +25,6 @@ fetch("http://localhost:8080/api/v1/users", {
 })
 
 function startMessaging(e){
-	console.log(e.name);
 	window.location.href = window.location.origin + `/html/chat.html?user=${e.name}`;
 }
 

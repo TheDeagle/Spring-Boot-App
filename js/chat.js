@@ -56,8 +56,17 @@ Socket.onopen = function(){
 }
 
 Socket.onmessage = function(e){
-	console.log(e.data);
 	var _json = JSON.parse(e.data);
+	if (_json.senderUsername == _chatterData[0].username){
+		var _rand = parseInt(Math.random() * 1000);
+		document.querySelector(".messages").innerHTML += ` <li class="message left appeared">
+																	<div class="avatar avatar${_rand}"></div>
+																	<div class="text_wrapper">
+																		<div class="text">${_json.message}</div>
+																	</div>
+																</li>`;
+		document.querySelector(`.avatar${_rand}`).style.backgroundImage = `url("http://localhost:8888/${_chatterData[0].pfpPath.replace("uploads/", "")}")`;	
+	}
 	
 }
 
@@ -71,13 +80,11 @@ window.Socket = Socket;
 
 document.querySelector(".fa-house").addEventListener("click", function()
 {
-	console.log("wtf");
 	window.location.href = window.location.origin + "/html/home.html";
 })
 
 document.addEventListener("keypress", function(e){
 	if (e.key == "Enter"){
-		console.log(_chatterData[0].username);
 		var _msg = document.querySelector(".message_input").value;
 		Socket.send(JSON.stringify({
 			"receiverUsername": _chatterData[0].username,
