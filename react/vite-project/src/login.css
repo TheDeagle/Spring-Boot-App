@@ -1,0 +1,205 @@
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+#login {
+	display: flex;
+	/* align-items: center; */
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+}
+
+::selection{
+background: #4158d0;
+color: #fff;
+}
+.wrapper, .wrapper2 {
+width: 380px;
+background: #fff;
+border-radius: 15px;
+box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+}
+.wrapper .title{
+	width: 25vw;
+	max-width: 450px;
+	font-size: 35px;
+	font-weight: 600;
+	text-align: center;
+	line-height: 100px;
+	color: #fff;
+	user-select: none;
+	border-radius: 15px 15px 0 0;
+	background: linear-gradient(-135deg, #97979797, #97979797);
+}
+.wrapper form, .wrapper2 form{
+padding: 10px 30px 50px 30px;
+
+}
+.wrapper form .field{
+	height: 50px;
+	width: 100%;
+	margin-top: 20px;
+	position: relative;
+}
+.wrapper form .field input{
+	height: 100%;
+	width: 100%;
+	outline: none;
+	font-size: 17px;
+	padding-left: 20px;
+	border: 1px solid lightgrey;
+	border-radius: 25px;
+	transition: all 0.3s ease;
+	background-color: #32343f;
+	color: rgb(206, 206, 206);
+}
+.wrapper form .field input:focus
+form .field input:valid{
+border-color: #ffffff;
+}
+.wrapper form .field label, .wrapper2 form .field label{
+position: absolute;
+top: 50%;
+left: 20px;
+color: #999999;
+font-weight: 400;
+font-size: 17px;
+pointer-events: none;
+transform: translateY(-50%);
+transition: all 0.3s ease;
+}
+form .field input:focus ~ label,
+form .field input:valid ~ label{
+top: 0%;
+font-size: 16px;
+color: #ffffff;
+background: #32343f;
+transform: translateY(-50%);
+}
+form .content{
+display: flex;
+width: 100%;
+height: 50px;
+font-size: 16px;
+align-items: center;
+justify-content: space-around;
+}
+form .content .checkbox{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+form .content input{
+width: 15px;
+height: 15px;
+background: red;
+}
+form .content label{
+color: #afaeae;
+user-select: none;
+padding-left: 5px;
+}
+form .content .pass-link{
+color: "";
+}
+form .field input[type="submit"]{
+color: #fff;
+border: none;
+padding-left: 0;
+font-size: 20px;
+font-weight: 500;
+cursor: pointer;
+background: linear-gradient(-135deg, #97979797, #97979797);
+transition: all 0.3s ease;
+}
+form .field input[type="submit"]:active{
+transform: scale(0.95);
+}
+form .signup-link{
+color: #d3d1d1;
+margin-top: 20px;
+text-align: center;
+}
+form .pass-link a,
+form .signup-link a{
+color: #ffffff;
+text-decoration: none;
+}
+form .pass-link a:hover,
+form .signup-link a:hover{
+text-decoration: underline;
+}
+#front, #back {
+	position: absolute;
+	background-color: #32343f;
+	transition: transform 1s ease;
+	backface-visibility: hidden;
+	height: 580px;
+	display: flex;
+	flex-direction: column;
+border-radius: 15px ;
+}
+#front {
+	transform: rotateY(180deg);
+}
+.wrapper {
+	transform-style: preserve-3d;
+}
+#back{
+	z-index: 2;
+	transform: rotateY(0deg);
+}
+.wrapper{
+	position: absolute;
+	top: 25%;
+	transition: transform 1s ease;
+	transform: rotateY(180deg);
+	border-radius: 15px ;
+
+}
+#pfp {
+	display: none;
+}
+#pfplabel {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	display: block;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	background-image: url("https://www.codekit.in/image/user.png");
+background-position: center;
+background-size: cover;
+}
+#pfplabel div {
+width: 25px;
+height: 25px;
+background: linear-gradient(-135deg, #ffffff, #4158d0);
+display: flex;
+border-radius: 50%;
+position: relative;
+float: right;
+top: 100%;
+transform: translateY(-100%);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 12px;
+color: white;
+}
+
+.wrapper {
+	width: 30vw;
+	max-width: 450px;
+	max-height: 500px;
+	background-color: #32343f;
+	color: #cccccc;
+	position: relative;
+}
