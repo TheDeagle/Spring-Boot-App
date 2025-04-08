@@ -4,7 +4,7 @@
 
 **⚠️ This app is currently in development and is not yet ready for production use.**
 
-This is a simple chat application built using Spring Boot for the backend and HTML, CSS, and JavaScript for the frontend. The application features basic session authentication over APIs and WebSockets for real-time communication. 
+A full-stack web application using Spring Boot for the backend and React for the frontend, designed to enable seamless real-time chat and video communication. I integrated WebSockets for smooth, real-time messaging and used WebRTC to provide voice and video calling capabilities. For secure user authentication, I implemented JWT, ensuring safe logins and session management. The project focuses on offering an engaging, interactive experience with a user-friendly interface and a reliable backend.
 
 ## Images
 * Login
